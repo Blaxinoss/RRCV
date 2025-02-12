@@ -1,4 +1,3 @@
-import Cookies from "js-cookie"; // Assuming you use cookies for authentication
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Modal from "./Modal.js"; // Import the modal component
@@ -7,7 +6,6 @@ import "./NavbarDark.css";
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLoggedIn, setIsLoggedIn] = useState(false); // Track login status
   const hamburgerRef = useRef(null);
   const menuListRef = useRef(null);
   const navigate = useNavigate();
@@ -20,18 +18,7 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-  // Check if user is logged in by looking for an auth token
-  useEffect(() => {
-    const token = Cookies.get("authToken");
-    setIsLoggedIn(!!token); // Set login status based on token presence
-  }, []);
 
-  // Handle logout
-  const handleLogout = () => {
-    Cookies.remove("authToken"); // Remove the auth token
-    setIsLoggedIn(false); // Update the login status
-    navigate("/login", { replace: true }); // Redirect to the login page
-  };
 
   useEffect(() => {
     const handleResize = () => {
@@ -62,6 +49,11 @@ const Navbar = () => {
         <nav className="menu">
           <ul ref={menuListRef} className={isMenuOpen ? 'active' : ''}>
             <li>
+              <Link style={{ color: 'red' }} to="/" className="contactUsBtn">
+                ADMIN SIDE
+              </Link>
+            </li>
+            <li>
               <Link to="/home">Home</Link>
             </li>
             <li>
@@ -75,28 +67,7 @@ const Navbar = () => {
                 Contact us
               </a>
             </li>
-            {isLoggedIn ? (
-              // Show "Logout" if logged in
-              <li>
-                <a href="#logout" className="sign" onClick={handleLogout}>
-                  Logout
-                </a>
-              </li>
-            ) : (
-              // Show "Login" and "Register" if not logged in
-              <>
-                <li>
-                  <Link to="/login" className="sign">
-                    Sign In
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/register" className="sign">
-                    Join Us
-                  </Link>
-                </li>
-              </>
-            )}
+
           </ul>
         </nav>
       </header>

@@ -1,4 +1,3 @@
-import Cookies from "js-cookie";
 import React, { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import Modal from "./Modal.js"; // Import the modal component
@@ -19,12 +18,6 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
-
-  // Handle logout
-  const handleLogout = () => {
-    Cookies.remove("authToken"); // Remove the auth token
-    navigate("/login", { replace: true }); // Redirect to the login page
-  };
 
   useEffect(() => {
     const handleResize = () => {
