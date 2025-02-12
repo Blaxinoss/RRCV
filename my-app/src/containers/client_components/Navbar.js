@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import Modal from "./Modal.js"; // Import the modal component
 import "./Navbar.css";
 
@@ -8,7 +8,6 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const hamburgerRef = useRef(null);
   const menuListRef = useRef(null);
-  const navigate = useNavigate();
 
   const handleModalToggle = () => {
     setShowModal(!showModal);
