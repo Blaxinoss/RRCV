@@ -8,7 +8,7 @@ const swaggerOptions = {
         },
         servers: [
             {
-                url: "https://depi-react-final.vercel.app",
+                url: "https://rrcc-cyan.vercel.app/",
             },
         ],
     },
