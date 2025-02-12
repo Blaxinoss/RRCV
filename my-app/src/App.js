@@ -12,41 +12,30 @@ import './App.css';
 import CarQuizApp from './containers/client_components/CarQuizApp.js';
 import Gallery from './containers/Gallery/Gallery.js';
 import Home from './containers/Home/Home.js';
-import Login from "./login&register/Login.js";
-import ProtectedRoute from "./login&register/ProtectedRoute.js";
-import Register from "./login&register/Register.js";
 import store from './redux/store.js';
-
 function App() {
   return (
     <Provider store={store}>
       <BrowserRouter>
         <Routes>
           {/* Public Routes */}
-          <Route path="/" element={<Login />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
           <Route path="*" element={<Errorcomp />} />
+          <Route path="/" element={<Layout />}>
+            {/* Protected Routes for Admin */}
 
-          {/* Protected Routes for Admin */}
-          <Route element={<ProtectedRoute requiredRole="admin" />}>
-            <Route path="/dashboard" element={<Layout />}>
-              <Route index element={<Dashboard />} /> {/* Dashboard component rendered at /dashboard */}
-              <Route path="cars" element={<Carspage />} /> {/* Relative path */}
-              <Route path="maintenance" element={<Maintain />} /> {/* Relative path */}
-              <Route path="rents" element={<RentParent />} /> {/* Relative path */}
-              <Route path="orders" element={<OrdersPage />} /> {/* New Orders Page Route */}
-
-            </Route>
+            <Route index element={<Dashboard />} /> {/* Dashboard component rendered at /dashboard */}
+            <Route path="cars" element={<Carspage />} /> {/* Relative path */}
+            <Route path="maintenance" element={<Maintain />} /> {/* Relative path */}
+            <Route path="rents" element={<RentParent />} /> {/* Relative path */}
+            <Route path="orders" element={<OrdersPage />} /> {/* New Orders Page Route */}
           </Route>
+
+
 
           {/* Protected Routes for User */}
-          <Route element={<ProtectedRoute requiredRole="user" />}>
-            <Route path="/home" element={<Home />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route path="/quiz" element={<CarQuizApp />} />
-
-          </Route>
+          <Route path="/home" element={<Home />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/quiz" element={<CarQuizApp />} />
         </Routes>
       </BrowserRouter>
     </Provider>

@@ -5,11 +5,11 @@
     align-items: center;
     padding: 20px;
     inline-size: 100%;
-    background-image: url('../../Images/quiz.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    min-block-size: 100vh; /* Full viewport height */
+    min-block-size: 100vh;
+    /* Full viewport height */
 }
 
 .car-quiz-form {
@@ -25,11 +25,13 @@
     justify-content: center;
     margin-block: 20px;
 }
-.quizInput{
+
+.quizInput {
     background-color: #fdb21d27;
     color: rgb(31, 18, 1);
 }
-.quizInput:focus{
+
+.quizInput:focus {
     background-color: #e6c78ad7;
 }
 
@@ -40,7 +42,8 @@
     text-align: center;
     color: rgb(53, 53, 53);
     margin-block-end: 20px;
-    display: block; /* Ensure it's visible */
+    display: block;
+    /* Ensure it's visible */
 }
 
 .car-quiz-question {

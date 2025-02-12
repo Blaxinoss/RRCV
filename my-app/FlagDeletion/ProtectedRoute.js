@@ -1,6 +1,6 @@
 import React from "react";
 import { Navigate, Outlet } from "react-router-dom";
-import { getCurrentUser } from "./services/getCurrentUser.js";
+import { getCurrentUser } from "../src/login&register/services/getCurrentUser.js";
 
 function ProtectedRoute({ requiredRole }) {
   const currentUser = getCurrentUser();

@@ -6,9 +6,9 @@ import TextField from "@mui/material/TextField";
 import Cookies from "js-cookie";
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { getCurrentUser } from "../src/login&register/services/getCurrentUser.js";
 import styles from "../styles/Login.module.css";
 import { loginApi } from "./api/loginApi.js";
-import { getCurrentUser } from "./services/getCurrentUser.js";
 
 function Login() {
   const navigate = useNavigate();
